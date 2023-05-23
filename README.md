@@ -15,8 +15,9 @@ HCP Boundary allows for secure access to resources across multiple networks and 
 1. Configure HCP Boundary.
 2. Deploy a Boundary Ingress Worker in a public network.
 3. Deploy a Boundary Egress Worker in a private network.
-3. Establish a connection between the Boundary Controller and the Boundary Workers.
-4. Configure Boundary to allow access to resources in the private network.
+4. Establish a connection between the Boundary Controller and the Boundary Workers.
+5. Deploy a server instance in a private subnet.
+6. Configure Boundary to allow access to resources in the private network.
 
 Your HCP Boundary Cluster needs to be created prior to executing the Terraform code. 
 
