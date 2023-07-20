@@ -6,7 +6,7 @@
 
 HashiCorp Boundary is a secure and efficient way to access distributed infrastructure. It provides secure access to SSH, RDP, and HTTP(S) resources, without the need for VPNs or exposing the infrastructure to the public internet.
 
-This README file explains how to set up a multi-hop deployment using Boundary.
+This README file explains how to set up a multi-hop deployment using Boundary as discussed in my blog post: https://medium.com/hashicorp-engineering/hcp-boundary-multi-hop-deployment-with-terraform-174a5d046410
 
 ## Multi-hop Deployment using HCP Boundary
 

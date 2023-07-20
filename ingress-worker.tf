@@ -92,9 +92,9 @@ data "cloudinit_config" "boundary_ingress_worker" {
     content_type = "text/x-shellscript"
     content      = <<-EOF
       #!/bin/bash
-      sudo yum install -y yum-utils
+      sudo yum install -y yum-utils shadow-utils
       sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-      sudo yum -y install boundary-worker-hcp
+      sudo yum -y install boundary-enterprise
       curl 'https://api.ipify.org?format=txt' > /tmp/ip
   EOF
   }
@@ -106,7 +106,7 @@ data "cloudinit_config" "boundary_ingress_worker" {
     content_type = "text/x-shellscript"
     content      = <<-EOF
     #!/bin/bash
-    sudo boundary-worker server -config="/etc/boundary.d/pki-worker.hcl"
+    sudo boundary server -config="/etc/boundary.d/pki-worker.hcl"
     EOF
   }
 }

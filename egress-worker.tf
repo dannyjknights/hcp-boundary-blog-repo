@@ -92,9 +92,9 @@ data "cloudinit_config" "boundary_egress_worker" {
     content_type = "text/x-shellscript"
     content      = <<-EOF
       #!/bin/bash
-      sudo yum install -y yum-utils
+      sudo yum install -y yum-utils shadow-utils
       sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-      sudo yum -y install boundary-worker-hcp
+      sudo yum -y install boundary-enterprise
   EOF
   }
   part {
@@ -105,7 +105,7 @@ data "cloudinit_config" "boundary_egress_worker" {
     content_type = "text/x-shellscript"
     content      = <<-EOF
     #!/bin/bash
-    sudo boundary-worker server -config="/etc/boundary.d/pki-worker.hcl"
+    sudo boundary server -config="/etc/boundary.d/pki-worker.hcl"
     EOF
   }
 }
@@ -123,7 +123,7 @@ resource "aws_instance" "boundary_egress_worker" {
   user_data_base64            = data.cloudinit_config.boundary_egress_worker.rendered
   key_name                    = aws_key_pair.ec2_key.key_name
   subnet_id                   = aws_subnet.private_subnet.id
-  private_ip                  = "192.168.0.10"
+  private_ip                  = "192.168.0.9"
   vpc_security_group_ids      = [aws_security_group.boundary_egress_worker_ssh_9202.id]
   tags = {
     Name = "Boundary Egress Worker"
